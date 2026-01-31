@@ -30,4 +30,20 @@ Meeting 1:
 6. String
     - array of character
     - not safe, can store/print out-of-range
+
+===============================================================
+Meeting 2:
+1. Every C statement has a value
+
+2. Be-carefull with = and ==
+
+3. bool data-type
+    - C don't have bool type
+    - include stdbool if need bool
+
+4. Operator: evaluate left to right
+    - AND (&&): if first condition is false, skip the rest
+    - OR (||): if first condition is true, skip the rest
+    - NOT (!): !true -> false, !false -> true
+
 ===============================================================

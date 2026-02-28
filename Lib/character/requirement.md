@@ -6,7 +6,6 @@
     - my_islower                islower
     - my_toupper                toupper
     - my_tolower                tolower
-                            
 
 2. requirement
     - create character library: character.c, character.h

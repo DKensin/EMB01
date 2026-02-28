@@ -1,4 +1,4 @@
-1. Write custom character function
+1. Write custom string function
     - my_str_len                strlen
     - my_str_copy               strcpy
     - my_str_concatenate        strcat

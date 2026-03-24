@@ -1,6 +1,3 @@
-#ifdef __STRING_H_
-#define __STRING_H_
-
 int compare_string (const char *str_1, const char *str_2)
 {
     int i = 0;
@@ -59,5 +56,3 @@ int my_atoi(char *str)
     return result*sign;
     
 }
-
-#endif

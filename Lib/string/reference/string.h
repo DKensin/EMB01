@@ -1,8 +1,7 @@
-#ifndef __S_T_R_I_N__G____H______
-#define __S_T_R_I_N__G____H______
-
-int a = 5;
+#ifndef __STRING_H__
+#define __STRING_H__
 
 unsigned int my_str_len(const char *str);
+char *my_str_copy(char *dest, const char *src);
 
-#endif /* __S_T_R_I_N__G____H______ */
+#endif /* __STRING_H__ */

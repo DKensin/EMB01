@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #define NULL        ((void *)0)
 
 /**
@@ -33,6 +31,7 @@ char *my_str_copy(char *dest, const char *src)
 {
     unsigned int dest_len;
     unsigned int src_len;
+    unsigned int min;
     char *p = NULL;
     int i;
 
@@ -41,22 +40,13 @@ char *my_str_copy(char *dest, const char *src)
         p = dest;
         dest_len = my_str_len(dest);
         src_len = my_str_len(src);
+        min = (src_len < dest_len) ? (src_len) : (dest_len);
 
-        if (src_len < dest_len)
+        for (i = 0; i < min; i++)
         {
-            for (i = 0; i < src_len; i++)
-            {
-                dest[i] = src[i];
-            }
-            dest[src_len] = '\0';
+            dest[i] = src[i];
         }
-        else
-        {
-            for (i = 0; i < dest_len; i++)
-            {
-                dest[i] = src[i];
-            }
-        }
+        dest[min] = '\0';
     }
 
     return p;
@@ -66,31 +56,33 @@ char *my_str_copy(char *dest, const char *src)
  * @brief: This function used to appen content from a string to other string
  * @param src: pointer to string will be coppied
  * @param dest: pointer to string will be appended to the end
+ * @param buf_size: size of dest string was static allocated
  * @return: pointer point destination string
  */
-char *my_str_concatenate(char *dest, const char *src)
+char *my_str_concatenate(char *dest, const char *src, unsigned int buf_size)
 {
     unsigned int dest_len = my_str_len(dest);
     unsigned int src_len = my_str_len(src);
-    char result[dest_len + src_len + 1];
+    unsigned int len = dest_len + src_len;
+    unsigned int min;
     char *p = NULL;
     int i;
 
     if ((src != NULL) && (dest != NULL))
     {
-        p = result;
-        for (i = 0; i < dest_len; i++)
-        {
-            result[i] = dest[i];
-        }
-        for (i = 0; i < src_len; i++)
-        {
-            result[dest_len + i] = src[i];
-        }
-        result[dest_len + src_len] = '\0';
-    }
+        p = dest;
 
-    printf("result = %s\n", result);
+        if (dest_len < buf_size)
+        {
+            min = (buf_size < len) ? (buf_size) : (len);
+
+            for (i = dest_len; i < min; i++)
+            {
+                dest[i] = src[i-dest_len];
+            }
+            dest[min] = '\0';
+        }
+    }
 
     return p;
 }

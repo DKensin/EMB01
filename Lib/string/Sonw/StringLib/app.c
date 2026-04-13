@@ -1,29 +1,39 @@
 #include <stdio.h>
-#include "Stringlib.h"
+#include "string.h"
+#include <string.h>
 
-int main()
+#define STRING_SIZE     (13u)
+
+int main(void)
 {
-    char src[] = "Xin chao moi nguoi";
-    char dest[50];
+    char str[STRING_SIZE] = "abcd";
+    char *ptr = NULL;
 
-    // Test strlen
-    int dodai = my_strlen(src);
-    printf("Do dai: %d\n", dodai);
+    ptr = my_str_copy(str, "Toan0123456789", STRING_SIZE-1);
+    if (NULL == ptr)
+    {
+        printf("Copy failed\n");
+    }
+    else
+    {
+        printf("my_str_copy: content = %s\n", str);
+    }
 
-    // Test strcpy
-    my_strcpy(dest, src);
-    printf("Sau khi copy: %s\n", dest);
+    ptr = my_str_concatenate(str, "1234", STRING_SIZE-1);
+    if (NULL == ptr)
+    {
+        printf("Concatenate failed\n");
+    }
+    else
+    {
+        printf("my_str_concatenate: content = %s\n", str);
+    }
 
-    // Test strcmp
-    printf("So sanh src va dest: %d\n", my_strcmp(src, dest));
+    char first[]  = "Toanaaaaaaaaaaaaaaaa";
+    char second[] = "ToanbA";
+    int result = strcmp(first, second);
 
-    char s1[] = "abc";
-    char s2[] = "abd";
-    printf("So sanh abc va abd: %d\n", my_strcmp(s1, s2));
-
-    char s3[] = "xyz";
-    char s4[] = "xy";
-    printf("So sanh xyz va xy: %d\n", my_strcmp(s3, s4));
+    printf("result = %d\n", result);
 
     return 0;
 }

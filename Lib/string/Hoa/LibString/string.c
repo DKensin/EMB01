@@ -26,7 +26,7 @@ int compare_string (const char *str_1, const char *str_2)
     else
         check=0;
     return check;
-    
+
 }
 
 /**
@@ -75,7 +75,7 @@ int str_len(char *str)
             len++;
         }
     }
-    
+
     return len;
 }
 
@@ -95,7 +95,7 @@ int my_atoi(char *str)
         i++;
     }
     return result*sign;
-    
+
 }
 
 /**

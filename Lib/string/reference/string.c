@@ -54,7 +54,7 @@ char *my_str_copy(char *dest, const char *src, unsigned int buf_size)
 }
 
 /**
- * @brief: This function used to appen content from a string to other string
+ * @brief: This function used to append content from a string to other string
  * @param src: pointer to string will be coppied
  * @param dest: pointer to string will be appended to the end
  * @param buf_size: size of dest string was static allocated
@@ -86,4 +86,43 @@ char *my_str_concatenate(char *dest, const char *src, unsigned int buf_size)
     }
 
     return p;
+}
+
+/**
+ * @brief: This function used to compare 2 strings.
+ * Compare each character, one-by-one, when found the first different, based on ASCII code.
+ * @param s1: first string
+ * @param s2: second string
+ * @return
+ *      Negative: s1 < s2,
+ *      0: s1 exactly same with s2,
+ *      Positive: s1 > s2
+ */
+int my_str_compare(const char *s1, const char *s2)
+{
+    int result = 0;
+    int i = 0;
+
+    if ((s1 == NULL) && (s2 == NULL))
+    {
+        result = 0;
+    }
+    else if ((s1 == NULL) && (s2 != NULL))
+    {
+        result = -1;
+    }
+    else if ((s1 != NULL) && (s2 == NULL))
+    {
+        result = 1;
+    }
+    else
+    {
+        while ((s1[i] != '\0') && (s1[i] == s2[i]))
+        {
+            i++;
+        }
+        result = s1[i] - s2[i];
+    }
+
+    return result;
 }

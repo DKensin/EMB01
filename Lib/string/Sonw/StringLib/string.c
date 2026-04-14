@@ -87,3 +87,61 @@ char *my_str_concatenate(char *dest, const char *src, unsigned int buf_size)
 
     return p;
 }
+/**
+ * @brief: This function used to compare two strings
+ * @param str1: pointer to first string
+ * @param str2: pointer to second string
+ * @return: 0 if strings are equal,
+ *          negative value if str1 < str2,
+ *          positive value if str1 > str2
+ */
+int my_str_cmp(const char *str1, const char *str2)
+{
+    int result = 0;
+    int i = 0;
+
+      if ((str1 == NULL) && (str2 == NULL))
+    {
+        result = 0;
+    }
+
+    else if (str1 == NULL)
+    {
+        result = -1;
+    }
+    else if (str2 == NULL)
+    {
+        result = 1;
+    }
+    else
+    {
+        while (1)
+        {
+            if (str1[i] == '\0')
+            {
+                  if (str2[i] == '\0')
+                {
+                    result = 0;
+                }
+                else
+                {
+                    result = -1;
+                }
+                break;
+            }
+             if (str2[i] == '\0')
+            {
+                result = 1;
+                break;
+            }
+            if (str1[i] != str2[i])
+            {
+                result = (str1[i] - str2[i]);
+                break;
+            }
+            i++;
+        }
+    }
+
+    return result;
+}

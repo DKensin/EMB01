@@ -126,3 +126,71 @@ int my_str_compare(const char *s1, const char *s2)
 
     return result;
 }
+
+/**
+ * @brief: This function used to search if a character exist in a string
+ * @param str: string used to search
+ * @param c: the character need to check
+ * @return
+ *      NULL: c not found,
+ *      pointer point to the first position that found this character
+ */
+char *my_str_find_char(const char *s, char c)
+{
+    char *p = NULL;
+
+    if (s != NULL)
+    {
+        p = s;
+        while ((*p != c) && (*p != '\0'))
+        {
+            p++;
+        }
+        /* reach end of string s */
+        if (*p == '\0')
+        {
+            p = NULL;
+        }
+    }
+
+    return p;
+}
+
+/**
+ * @brief: This function used to search if a string exist in a string
+ * @param seek: string want to search
+ * @param src: source where seek will find
+ * @return
+ *      NULL: seek not found,
+ *      pointer point to the first position that found this seek string
+ */
+char *my_str_find_str(const char *src, const char *seek)
+{
+    char *p = NULL;
+    int i;
+    int len = my_str_len(src);
+    int k = 0;
+
+    if ((src != NULL) && (seek != NULL))
+    {
+        for (i = 0; i < len; i++)
+        {
+            if (src[i] == seek[0])
+            {
+                break;
+            }
+        }
+        p = &src[i];
+        while (src[i] == seek[k])
+        {
+            i++;
+            k++;
+        }
+        if (seek[k] != '\0')
+        {
+            p = NULL;
+        }
+    }
+
+    return p;
+}

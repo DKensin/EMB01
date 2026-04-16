@@ -3,7 +3,8 @@
     - my_str_copy               strcpy
     - my_str_concatenate        strcat
     - my_str_compare            strcmp
-    - my_str_search             strchr
+    - my_str_find_char          strchr
+    - my_str_find_str
     - my_atoi                   atoi
 
 2. requirement

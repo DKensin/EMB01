@@ -63,19 +63,19 @@ int main(void)
         printf("%c found in %s, first appear at index %d\n", c, s2, index);
     }
 
-    char *src = "C programming language. C programming is easy.";
+    char *src = "The C journey. C programming language is easy";
     char *seek = "C programming";
 
     ptr = my_str_find_str(src, seek);
 
     if (ptr == NULL)
     {
-        printf("%s not found in %s", seek, src);
+        printf("'%s' not found in '%s'", seek, src);
     }
     else
     {
         index = ptr - src;
-        printf("'%s' exist in '%s', starting at index %d", seek, src, index);
+        printf("Found '%s' in '%s', starting at index %d", seek, src, index);
     }
 
     return 0;

@@ -167,28 +167,40 @@ char *my_str_find_char(const char *s, char c)
 char *my_str_find_str(const char *src, const char *seek)
 {
     char *p = NULL;
-    int i;
+    int i = 0;
     int len = my_str_len(src);
-    int k = 0;
+    int k;
+    int found_index = 0;
 
     if ((src != NULL) && (seek != NULL))
     {
-        for (i = 0; i < len; i++)
+        while (src[found_index] != '\0')
         {
-            if (src[i] == seek[0])
+            for (i = found_index+1; i < len; i++)
             {
+                if (src[i] == seek[0])
+                {
+                    break;
+                }
+            }
+            /* next loop should be started from next character*/
+            found_index = i;
+            k = 0; /* starting pair compair from first seek index */
+            while (src[i] == seek[k])
+            {
+                i++;
+                k++;
+            }
+            if (seek[k] == '\0')
+            {
+                p = &src[found_index];
                 break;
             }
-        }
-        p = &src[i];
-        while (src[i] == seek[k])
-        {
-            i++;
-            k++;
-        }
-        if (seek[k] != '\0')
-        {
-            p = NULL;
+            else
+            {
+                p = NULL;
+            }
+
         }
     }
 

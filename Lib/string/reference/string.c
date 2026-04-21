@@ -141,7 +141,7 @@ char *my_str_find_char(const char *s, char c)
 
     if (s != NULL)
     {
-        p = s;
+        p = (char *)s;
         while ((*p != c) && (*p != '\0'))
         {
             p++;
@@ -193,16 +193,45 @@ char *my_str_find_str(const char *src, const char *seek)
             }
             if (seek[k] == '\0')
             {
-                p = &src[found_index];
+                p = (char *)(&src[found_index]);
                 break;
             }
             else
             {
                 p = NULL;
             }
-
         }
     }
 
     return p;
+}
+/**
+ * @brief: This function used to convert a numeric string to an integer number
+ * @param s: string used to convert
+ * @return: an integer value (can be negative, position or 0)
+ */
+long long my_atoi(const char *s)
+{
+    long long value = 0;
+    long long sign = 1;
+
+    if (s != NULL)
+    {
+        /* check if string is a negative value*/
+        if (*s == '-')
+        {
+            sign = -1;
+            s++;    /* point to next character */
+        }
+        /* only accept digit character */
+        while (('0' <= *s) && (*s <= '9'))
+        {
+            value = value * 10 + (*s - '0');
+            s++;
+        }
+    }
+
+    value *= sign;
+
+    return value;
 }
